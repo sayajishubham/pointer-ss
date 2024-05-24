@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            position: relative;
+            background-color: black;
+        }
+        .cursor {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border: 1px solid white;
+            border-radius: 50%;
+            left: 0%;
+            top: 0%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: .13s ease;
+            z-index: 999;
+        }
+
+        .cursor2 {
+            position: fixed;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: #fff;
+            left: 0%;
+            top: 0%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: .1s ease;
+            z-index: 999;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="cursor"></div>
+    <div class="cursor2"></div>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        var cursor = document.querySelector(".cursor");
+        var cursor2 = document.querySelector(".cursor2");
+        cursorscale = document.querySelectorAll('.cursorscale')
+        document.addEventListener("mousemove", function (e) {
+            cursor.style.cssText = cursor2.style.cssText = "left:" + e.clientX + "px; top: " + e.clientY + "px;";
+        });
+
+        cursorscale.forEach(link => {
+            link.addEventListener('mouseleave', () => {
+                cursor.classList.remove('grow');
+                cursor, classList.remove('grow-small');
+
+            })
+            link.addEventListener('mousemove', () => {
+                cursor.classList.add('grow');
+                if (link.classList.containes('small')) {
+                    cursor.classList.remove('grow');
+                    cursor, classList.add('grow-small');
+                }
+            })
+        });
+    </script>
+</body>
+
+</html>
